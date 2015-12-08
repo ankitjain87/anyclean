@@ -1,0 +1,46 @@
+{% extends "cc/base.html" %}
+
+{% block content %}
+<div>
+    <div>
+        <h3>Search customer and details by:</h3>
+        <form method="post" action="../search/">
+            <input type="radio" name="type" value="EMAIL">Email <br/>
+            <input type="radio" name="type" value="MOBILE">Mobile <br/>
+            <input type="radio" name="type" value="ORDER">Order <br/>
+            <input type="radio" name="type" value="PICJUP">PICKUP <br/>
+            <input type="text" name="value" placeholder="Enter value here.." required>
+            <input type="submit" value="Get Details">
+        </form>
+    </div>
+
+    <div>
+        {% if details %}
+        <div>
+            <ul>
+                <li>Name: {{ details.name }}
+                <li>Email: {{ details.email }}
+                <li>Mobile: {{ details.mobile }}
+                <li>Address: {{ details.address }}
+            </ul>
+        </div>
+        <div>
+            <b>Pickups:</b>
+            {% for pick in details.pickups %}
+
+            {% endfor %}
+        <div>
+        <div>
+            <b>Orders:</b>
+            {% for order in details.orders %}
+
+            {% endfor %}
+        <div>
+
+        {% else %}
+            <b> No Details found.</b>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

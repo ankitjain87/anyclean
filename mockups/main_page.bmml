@@ -1,0 +1,30 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1029" measuredH="583" mockupW="699" mockupH="573">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::iPhone" x="330" y="10" w="282" h="573" measuredW="282" measuredH="573" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bgPattern>allWhite</bgPattern>
+        <model>IPhone5</model>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::PointyButton" x="357" y="112" w="221" h="-1" measuredW="77" measuredH="27" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+        <direction>center</direction>
+        <newLayout>true</newLayout>
+        <text>AnyClean</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::iPhoneMenu" x="357" y="139" w="227" h="-1" measuredW="215" measuredH="360" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+        <text>__%20Request%20Pickup%0A__%20Orders%0A__%20Rate%20List%0A__%20Profile%0A__%20Settings%0A__%20Refer%20a%20friend%0A__%20Feedback</text>
+      </controlProperties>
+    </control>
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::StickyNote" x="792" y="37" w="237" h="265" measuredW="109" measuredH="123" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>We%20can%20also%20put%20Profile%20menu%20in%20Settings%20%3F%3F%20Thoughts%3F%3F%0A%20%0ASetting%20-%3E%20Profile%20-%3E%20Add/update%20profile%28Name%2C%20number%2C%20address%29%0A%20%0AWe%20also%20need%20to%20add%20%27FAQs%27</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

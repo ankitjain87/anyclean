@@ -1,0 +1,32 @@
+<html>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Registration Form</title>
+      <link rel="stylesheet" href="../static/css/login.css">
+      <script src="../static/js/register.js"></script>
+      <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script-->
+    </head>
+    <body>
+        <section class="container">
+            <div class="login">
+              <h1>Register</h1>
+              {% if is_error %}
+                <span class='red'>{{message}}</span>
+              {% endif %}
+              <form method="post" action="../register/">
+                {{ form.as_p }}
+                <p>
+                  <input type="checkbox" name="terms">
+                  <span>I agree to the <a href="#">Terms & Conditions</a></span>
+                </p>
+                <p class="submit"><input type="submit" name="commit" value="Register"></p>
+              </form>
+            </div>
+            <div class="login-help">
+              <p><a href="../loginPage/">Already Registered? Sign In</a></p>
+            </div>
+        </section>
+    </body>
+</html>

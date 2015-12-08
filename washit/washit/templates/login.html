@@ -1,0 +1,45 @@
+<html>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Login Form</title>
+      <link rel="stylesheet" href="../static/css/login.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script src="../static/js/common.js"></script>
+    </head>
+    <body>
+        <script src="../static/js/fb_login.js"></script>
+        <h1>Welcome!...</h1>
+        <section class="container">
+            <div class="login">
+              <h1>Login to Web App</h1>
+              {% if is_error %}
+                <span class='red'>{{message}}</span>
+              {% endif %}
+              <form method="post" action="../login/">
+                <p><input type="text" name="user_login_id" value="" placeholder="Username or Email"></p>
+                <p><input type="password" name="password" value="" placeholder="Password"></p>
+                <p class="remember_me">
+                  <label>
+                    <input type="checkbox" name="remember_me" id="remember_me">
+                    Remember me on this computer
+                  </label>
+                </p>
+                <p class="submit"><input type="submit" name="commit" value="Login"></p>
+              </form>
+              <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" size="large">
+              </fb:login-button>
+              <div id="status">
+            </div>
+
+            <div class="login-help">
+              <p>Forgot your password? <a href="index.html">Click here to reset it</a>.</p>
+            </div>
+            <div class="login-help">
+              <p><a href="../register/">New User, Register!</a></p>
+            </div>
+
+            </div>
+        </section>
+    </body>
+</html>

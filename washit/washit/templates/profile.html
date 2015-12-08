@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="page-head-line">Profile</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Profile Info</div>
+                <div class="panel-body">
+                    <form id="updateInfo" method="post" action='../updateInfo/'>
+                        <div class="form-group">
+                            <label for="first_name">First Name</label>
+                            <input class="form-control" type="text" name="first_name" value="{{ request.user.first_name }}" placeholder="First Name*" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Last Name</label>
+                            <input class="form-control" type="text" name="last_name" value="{{ request.user.last_name }}" placeholder="Last Name*" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input class="form-control" type="text" name="email" value="{{ request.user.email }}" disabled>
+                        </div>
+                        <button type="submit" class="btn btn-default">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="page-head-line">Manage Address</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {% if is_edit %}
+                        Update Address
+                    {% else %}
+                        Add New Address
+                    {% endif %}
+                </div>
+                <div class="panel-body">
+                    {% if is_edit %}
+                        <form method="post" action="../updateAddress/">
+                    {% else %}
+                        <form method="post" action="../addAddress/">
+                    {% endif %}
+                    <input type="hidden" name="address_id" value="{{ address.id }}">
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea class="form-control" id="address" name="address" rows="4" cols="40" placeholder="Address" required>{{ address.info_string }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Region</label>
+                        <select class="form-control" name="region" required>
+                            {% for city in cities %}
+                                <option value="{{ city.id }}" {% if address.region.id == city.id %} selected {% endif %}>
+                                    {{ city.name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pin_code">Pincode</label>
+                        <input class="form-control" type="text" name="pin_code" value="{{ address.pin_code }}" placeholder="Pin code" required>
+                    </div>
+                    <button type="submit" class="btn btn-default">Add</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Your Address(s)
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead></thead>
+                            <tbody>
+                                {% for ad in addresses %}
+                                <tr>
+                                    <td>{{ ad.address }}, {{ ad.city }} {{ ad.pin_code }}</td>
+                                    <td>
+                                        <form method="post" action="../profile/">
+                                            <input type="hidden" name="address_id" value="{{ ad.id }}">
+                                            <input type="submit" value="Edit">
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form method="post" action="../deleteAddress/">
+                                            <input type="hidden" name="address_id" value="{{ ad.id }}">
+                                            <input type="submit" value="Delete">
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                    No Address.
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block extra_script %}
+    $('#profile').addClass("active-menu");
+
+    $('#updateInfo').ajaxForm(function(data) {
+        if (data['is_error']) {
+            showErrorMessage(data['message']);
+        } else {
+            showSuccessMessage(data['message']);
+        }
+
+    }); 
+{% endblock %}

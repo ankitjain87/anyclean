@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Any Clean</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+	<string name="any_clean">AnyClean</string>
+	<string name="email_id">Email id</string>
+	<string name="password">Password</string>
+	<string name="login">Login</string>
+	<string name="sign_up">SignUp</string>	
+	<string name="forgot_password">Forgot Password</string>
+	<string name="registration">Registration</string>
+	<string name="name">Name</string>
+	<string name="mobile_no">Mobile no</string>
+	<string name="re_type_password">Re-Type Password</string>
+	<string name="register">Register</string>
+	<string name="request_pick_up">Request Pickup</string>
+	<string name="orders">Orders</string>
+	<string name="rate_list">Rate List</string>
+	<string name="profile">Profile</string>
+	<string name="settings">Settings</string>
+	<string name="refer_friends">Refer Friends</string>
+	<string name="feedback">Feedback</string>
+	<string name="any_clean_feature_list">Feature List</string>
+	<string-array name="any_clean_feature">
+	    <item>@string/request_pick_up</item>
+	    <item>@string/orders</item>
+	    <item>@string/rate_list</item>
+	    <item>@string/profile</item>
+	    <item>@string/settings</item>
+	    <item>@string/refer_friends</item>
+	    <item>@string/feedback</item>
+	</string-array>
+	<string name="address">Address</string>
+</resources>

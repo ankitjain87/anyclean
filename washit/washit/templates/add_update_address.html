@@ -1,0 +1,38 @@
+<html>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Add/Update Address</title>
+      <link rel="stylesheet" href="../static/css/login.css">
+    </head>
+    <body>
+        <section class="container">
+            <div class="login">
+              {% if is_edit %}
+                <h1>Update Address</h1>
+              {% else %}
+                <h1>Add Address</h1>
+              {% endif %}
+              {% if is_edit %}
+                <form method="post" action="../updateAddress/">
+              {% else %}
+                <form method="post" action="../addAddress/">
+              {% endif %}
+              <p><input type="hidden" name="address_id" value="{{ address.id }}"></p>
+              <p>
+                <textarea name="address" rows="4" cols="40" placeholder="Address">{{ address.info_string }}</textarea>
+              </p>
+              <select name="region">
+                {% for re in regions %}
+                  <option value="{{ re.id }}" {% if address.region == re.id %} selected {% endif %}>{{ re.name }}</option>
+                {% endfor %}
+                </select>
+                <p><input type="text" name="pin_code" value="{{ address.pin_code }}" placeholder="Pin code"></p>
+                <p class="submit">
+                  <input type="submit" name="commit" value="Submit">
+                </p>
+              </form>
+            </div>
+        </section>
+    </body>
+</html>

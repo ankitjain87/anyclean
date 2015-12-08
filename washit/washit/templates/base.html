@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% if request.user.is_authenticated %}Logged In{% else %}Not Logged In{% endif %}</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block head_title %}{% endblock %}</title>
+        {% block extra_head %}
+        {% endblock %}
+
+        <link href="/static/admin/css/animate.css" rel="stylesheet" />
+        <link href="/static/admin/css/bootstrap.css" rel="stylesheet" />
+        <link href="/static/admin/css/font-awesome.css" rel="stylesheet" />
+        <link href="/static/admin/css/style.css" rel="stylesheet" />
+
+    </head>
+    <body>
+        <div id="wrapper">
+            <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="../">Anyclean.in</a>
+                </div>
+                <div class="notifications-wrapper">
+                    <div class="sb_container">
+                        <div class="sb_row animated opacity" data-andown="fadeIn" data-animation="animation">
+                            <div class="col-sm-12">
+                                <ul class="social-network social-circle">
+                                    <!--li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li-->
+                                    <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- /. NAV TOP  -->
+            <nav  class="navbar-default navbar-side" role="navigation">
+                <div class="sidebar-collapse">
+                    <ul class="nav" id="main-menu">
+                        <li>
+                            <div class="user-img-div">
+                                <img src="{{ request.user.profile.profile_image_url }}" class="img-circle"/>
+                            </div>
+                        </li>
+                         <li>
+                            <a>
+                                <strong>
+                                    {% if request.user.first_name or request.user.last_name %}
+                                        {{ request.user.first_name }} {{ request.user.last_name }}
+                                    {% else %}
+                                        {{ request.user.email }}
+                                    {% endif %}
+                                </strong>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a id="dashboard" href="/dashboard/"><i class="fa fa-dashboard "></i>Dashboard</a>
+                        </li>
+                        <li>
+                            <a id="request_pickup" href="/requestPickup/"><i class="fa fa-bolt"></i>Request Pickup</a>
+                        </li>
+                        <li>
+                            <a id="order_history" href="/orderHistory/"><i class="fa fa-history"></i>Order History</a>
+                        </li>
+                         <li>
+                            <a id="track_request" href="/trackRequest/"><i class="fa fa-road"></i>Track Request</a>
+                        </li>
+                         <li>
+                            <a id="profile" href="/profile/"><i class="fa fa-user"></i>Profile</a>
+                        </li>
+                         <li>
+                            <a id="subscribe_me" href="/subscription/"><i class="fa fa-check-circle"></i>Subscribe Me</a>
+                        </li>
+                         <li>
+                            <a id="refer_friend" href="/refer/"><i class="fa fa-user-plus"></i>Refer a Friend</a>
+                        </li>
+                         <li>
+                            <a id="faq" href="/faq/"><i class="fa fa-question-circle"></i>FAQ</a>
+                        </li>
+                         <li>
+                            <a id="change_password" href="../accounts/password/change/"><i class="fa fa-key"></i>Change Password</a>
+                        </li>
+                        <li>
+                            <a href="/logout/"><i class="fa fa-power-off"></i>Logout</a>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+
+        <div id="page-wrapper" class="page-wrapper-cls">
+            <div id="page-inner">
+                <div id="message" class="row" style="display:None;">
+                    <div class="col-md-6">
+                        <div id="message_text" class="alert alert-info alert-danger"></div>
+                    </div>
+                </div>
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+
+        <footer>
+            &copy; 2015 Anyclean.in
+        </footer>
+        <script src="/static/admin/js/jquery-1.11.1.js"></script>
+        <script src="/static/admin/js/bootstrap.js"></script>
+        <script src="/static/admin/js/jquery.metisMenu.js"></script>
+        <script src="/static/admin/js/custom.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
+        <script src="http://malsup.github.com/jquery.form.js"></script>
+
+        <script> 
+            $(document).ready(function() {
+                function showSuccessMessage(msg) {
+                    $('#message_text').removeClass("alert-danger").addClass("alert-info");
+                    $('#message_text').text(msg);
+                    $('#message').show();
+                }
+                function showErrorMessage(msg) {
+                    $('#message_text').removeClass("alert-info").addClass("alert-danger");
+                    $('#message_text').text(msg);
+                    $('#message').show();
+                }
+                {% block extra_script %}
+                {% endblock %}
+            });
+        </script>
+
+        <!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+            var $_Tawk_API={},$_Tawk_LoadStart=new Date();
+            (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/55c1f54dea90c3c62eb8acd0/default';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+            })();
+        </script>
+        <!--End of Tawk.to Script-->
+    </body>
+</html>

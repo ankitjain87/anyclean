@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="page-head-line">Request Pickup {{ message }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Add pickup request</div>
+                <div class="panel-body">
+                    <form id="pickup" method="post" action='../createPickup/'>
+                        <div class="form-group">
+                            <label for="mobile">Mobile</label>
+                            <input id="mobile" class="form-control" type="text" name="mobile" value="{{ party_detail.mobile }}"  {% if party_detail.mobile %} disabled {% else %} required {% endif %} placeholder="Mobile*" maxlength="10">
+                        </div>
+                        <div class="form-group">
+                            <label>Select Address</label>
+                            <select name="address_id"  class="form-control" required>
+                                {% for ad in party_detail.address %}
+                                    <option value="{{ ad.id }}">{{ ad.address }} {{ ad.region }} {{ ad.pin_code }}</option>
+                                {% endfor %}
+                            </select>
+                            <a href="../profile/">Add new address</a>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Pickup Date</label>
+                            <input id="date" class="form-control" type="date" name="date" min="{{ start_date }}" value="" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Time Slot</label>
+                            <select name="time_slot_id" class="form-control">
+                              {% for slot in time_slots %}
+                                <option value="{{ slot.id }}">{{ slot.time }}</option>
+                              {% endfor %}
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-default">Pickup</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_script %}
+    $('#request_pickup').addClass("active-menu");
+
+    $('#pickup').ajaxForm(function(data) {
+        if (data['is_error']) {
+            showErrorMessage(data['message']);
+        } else {
+            showSuccessMessage(data['message']);
+        }
+
+    });
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="page-head-line">Track pickup requests</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+             <!--    Hover Rows  -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    All Pickups
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Request Id</th>
+                                    <th>Status</th>
+                                    <th>Requested Date</th>
+                                    <th>Pickup Date</th>
+                                    <th>Time</th>
+                                    <th>Address</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for pick in req %}
+                                    <tr>
+                                        <td>{{ pick.request_id }}</td>
+                                        <td>{{ pick.status }}</td>
+                                        <td>{{ pick.created_date }}</td>
+                                        <td>{{ pick.date }}</td>
+                                        <td>{{ pick.time }}</td>
+                                        <td>{{ pick.address }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block extra_script %}
+    $('#track_request').addClass("active-menu");
+{% endblock %}

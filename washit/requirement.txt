@@ -1,0 +1,13 @@
+
+sudo pip install django
+
+sudo pip install django-suit==0.2.13
+sudo pip install django-allauth==0.21.0
+sudo pip install django-widget-tweaks
+sudo pip install django-tokenapi
+
+sudo apt-get install python-mysqldb
+
+sudo pip install python-dateutil
+
+sudo pip install plivo

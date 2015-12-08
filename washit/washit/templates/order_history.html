@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="page-head-line">Order History</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    All Pickups
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Order Id</th>
+                                    <th>Type</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Quantity</th>
+                                    <th>Weight</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for order in orders %}
+                                    <tr>
+                                        <td>{{ order.id }}</td>
+                                        <td>{{ order.type }}</td>
+                                        <td>{{ order.date }}</td>
+                                        <td>{{ order.status }}</td>
+                                        <td>{{ order.quantity }}</td>
+                                        <td>{{ order.weight }}</td>
+                                        <td>{{ order.amount }}</td>
+                                    </tr>
+                                {% empty %}
+                                    <tr><td colspan="7" style="text-align:center;">No Data found. :(</td></tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block extra_script %}
+    $('#order_history').addClass("active-menu");
+{% endblock %}

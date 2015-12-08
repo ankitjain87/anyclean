@@ -1,0 +1,80 @@
+{% extends "account/base.html" %}
+
+{% load url from future %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+
+    <div class="top-content">
+        <div class="inner-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text">
+                        <h1><strong>Anyclean</strong> Signup</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3 form-box">
+                      <div class="form-top">
+                        <div class="form-top-left">
+                          <h3>Register</h3>
+                          <p>Enter your details</p>
+                        </div>
+                        <div class="form-top-right">
+                          <i class="fa fa-key"></i>
+                        </div>
+                        </div>
+                        <div class="form-bottom">
+                        <form role="form" action="{% url 'account_signup' %}" method="post" class="login-form">
+                            {% load widget_tweaks %}
+                            {% csrf_token %}
+                            <span class="text-danger">{{ form.non_field_errors }}</span>
+                            <div class="form-group">
+                              <label class="sr-only" for="form-firstName">First Name</label>
+                                {{ form.first_name|add_class:"form-firstName form-control" }}
+                            </div>
+                            <div class="form-group">
+                              <label class="sr-only" for="form-lastName">Last Name</label>
+                                {{ form.last_name|add_class:"form-lastName form-control" }}
+                            </div>
+                            <div class="form-group">
+                              <label class="sr-only" for="form-username">Username</label>
+                                {{ form.username|add_class:"form-username form-control" }}
+                                {% if form.username.errors %}
+                                    <span class="text-danger">
+                                        <ul><li>User already register with this mobile no.</li></ul>
+                                    </span>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                              <label class="sr-only" for="form-email">Email</label>
+                                {{ form.email|add_class:"form-email form-control" }}
+                                <span class="text-danger">{{ form.email.errors }}</span>
+                            </div>
+                            <div class="form-group">
+                              <label class="sr-only" for="form-password">Password</label>
+                                {{ form.password1|add_class:"form-password form-control" }}
+                                <span class="text-danger">{{ form.password1.errors }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-password">Password Again</label>
+                                {{ form.password2|add_class:"form-password form-control" }}
+                                <span class="text-danger">{{ form.password2.errors }}</span>
+                            </div>
+                            <button type="submit" class="btn">{% trans "Sign Up" %} &raquo;</button>
+                            <div class="btn">
+                                Already have an account? <a href="{{ login_url }}">Sign In</a>
+                            </div>
+                      </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

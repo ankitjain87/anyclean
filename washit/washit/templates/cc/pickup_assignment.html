@@ -1,0 +1,43 @@
+{% extends "cc/base.html" %}
+
+{% block content %}
+<div>
+    <h3>Pickup Assignments:<h3>
+
+    <div>
+        <table>
+            <thead>
+                <th>PickupId</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Customer Name</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th></th>
+                <th></th>
+            </thead>
+            <tbody>
+                {% for pick in details %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select>
+                        </select>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+
+        </table>
+    </div>
+
+</div>
+{% endblock %}

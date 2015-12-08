@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="page-head-line">Frequently Asked Questions</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel-body">
+                <div class="panel-group" id="accordion">
+                    {% for faq in faqs %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.counter }}" class="collapsed">{{  faq.title }}</a>
+                            </h4>
+                        </div>
+                        <div id="collapse{{ forloop.counter }}" class="panel-collapse collapse" style="height: 0px;">
+                            <div class="panel-body">
+                                <b>Q.</b> {{  faq.ques }} <br>
+                                <b>A.</b> {{  faq.ans }}
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                        No Questions.
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_script %}
+    $('#faq').addClass("active-menu");
+{% endblock %}
