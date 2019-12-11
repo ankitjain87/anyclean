@@ -4,8 +4,8 @@ import config
 import plivo
 
 
-auth_id = "MAZMU5NJC3YMQ1OGFIMD"
-auth_token = "YjU4MTM5NWVlMjM0ZWJhMmM2YjBhYmQxYzA2MWJl"
+auth_id = "SOMEAUTH"
+auth_token = "SOMETOKEN"
 
 p = plivo.RestAPI(auth_id, auth_token)
 
